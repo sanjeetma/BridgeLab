@@ -9,9 +9,9 @@ public class Main {
 
 	public static void main(String[] args) throws IOException, ParseException {
 		@SuppressWarnings("resource")
-		Scanner sc=new Scanner(System.in); 
-		StockAccount obj=new StockAccount();
-		//obj.valueOf();
+		Stock obj= Factory.createObject();
+		int choice;
+		do {
 		System.out.println("enter your choice");
 		System.out.println("Enter 1 to buy Share");
 		System.out.println("Enter 2 to sell Share");
@@ -19,27 +19,27 @@ public class Main {
 		System.out.println("Enter 4 check  Company");
 		System.out.println("Enter 5 to check all details of comapny");
 		System.out.println("Enter 6 to exit");
-		int choice=sc.nextInt();
-		boolean ask=true;
+		 choice=Util.intInput();
+
 		switch(choice) {
-		
+		 
 		case 1:
 			System.out.println("enter number of Share");
-			int amount=sc.nextInt();
+			int amount=Util.intInput();
 			System.out.println("enter symbol of company");
-			String symbol = sc.next();
+			String symbol = Util.stringInput();
 			obj.buy(amount, symbol);
 			break;
 		case 2:
 			System.out.println("enter number of Share");
-			int amount1=sc.nextInt();
+			int amount1=Util.intInput();
 			System.out.println("enter symbol of company");
-			String symbol1=sc.next();
+			String symbol1=Util.stringInput();
 			obj.sell(amount1,symbol1);
 			break;
 		case 3: 
 			System.out.println("Enter company name");
-			String str=sc.next();
+			String str=Util.stringInput();
 			obj.stockaccount(str);
 			break;
 		case 4: 
@@ -51,11 +51,11 @@ public class Main {
 			break;
 		default:
 			System.out.println("Good Bye");
-			ask=false;
 			break;
 		}
 		
-		
-	}
+		}while(choice<6);
+	
 
+}
 }
